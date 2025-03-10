@@ -146,11 +146,12 @@ bottomLine.BorderSizePixel = 0.6
 
 
 
+
 -- AutoFarm Label
 farmLabel.Parent = MenuPanel
 farmLabel.BackgroundTransparency = 1
 farmLabel.BorderSizePixel = 0
-farmLabel.Position = UDim2.new(0.2, -100, 0.1, 0) -- Aligné avec Switch1
+farmLabel.Position = UDim2.new(0.25, -50, 0.1, 0) -- Plus proche de Switch1
 farmLabel.Size = UDim2.new(0, 100, 0, 40)
 farmLabel.Font = Enum.Font.SourceSans
 farmLabel.Text = "Autofarm"
@@ -163,7 +164,7 @@ farmLabel.TextStrokeTransparency = 0
 meleeLabel.Parent = MenuPanel
 meleeLabel.BackgroundTransparency = 1
 meleeLabel.BorderSizePixel = 0
-meleeLabel.Position = UDim2.new(0.2, -100, 0.3, 0) -- Aligné avec Switch3
+meleeLabel.Position = UDim2.new(0.25, -50, 0.3, 0) -- Plus proche de Switch3
 meleeLabel.Size = UDim2.new(0, 100, 0, 40)
 meleeLabel.Font = Enum.Font.SourceSans
 meleeLabel.Text = "Form"
@@ -176,7 +177,7 @@ meleeLabel.TextStrokeTransparency = 0
 Reb.Parent = MenuPanel
 Reb.BackgroundTransparency = 1
 Reb.BorderSizePixel = 0
-Reb.Position = UDim2.new(0.2, -100, 0.4, 0) -- Aligné avec Switch5
+Reb.Position = UDim2.new(0.25, -50, 0.4, 0) -- Plus proche de Switch5
 Reb.Size = UDim2.new(0, 100, 0, 40)
 Reb.Font = Enum.Font.SourceSans
 Reb.Text = "Rebirth"
@@ -189,7 +190,7 @@ Reb.TextStrokeTransparency = 0
 mle_extLabel.Parent = MenuPanel
 mle_extLabel.BackgroundTransparency = 1
 mle_extLabel.BorderSizePixel = 0
-mle_extLabel.Position = UDim2.new(0.2, -100, 0.5, 0) -- Aligné avec Switch6
+mle_extLabel.Position = UDim2.new(0.25, -50, 0.5, 0) -- Plus proche de Switch6
 mle_extLabel.Size = UDim2.new(0, 100, 0, 40)
 mle_extLabel.Font = Enum.Font.SourceSans
 mle_extLabel.Text = "SKILLS"
