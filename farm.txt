@@ -1,4 +1,4 @@
-wait(2)
+wait(0.5)
 local MenuPanel = game.CoreGui:FindFirstChild("BERUS SCRIPT")
 local playerCount = #game.Players:GetPlayers()
 
