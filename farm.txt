@@ -146,64 +146,58 @@ bottomLine.BorderSizePixel = 0.6
 
 
 
+-- AutoFarm Label
 farmLabel.Parent = MenuPanel
 farmLabel.BackgroundTransparency = 1
-farmLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 farmLabel.BorderSizePixel = 0
-farmLabel.Position = UDim2.new(0.1, -30, 0, 53)
-farmLabel.Size = UDim2.new(0, 89, 0, 60)
+farmLabel.Position = UDim2.new(0.2, -100, 0.1, 0) -- Aligné avec Switch1
+farmLabel.Size = UDim2.new(0, 100, 0, 40)
 farmLabel.Font = Enum.Font.SourceSans
 farmLabel.Text = "Autofarm"
-farmLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+farmLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 farmLabel.TextScaled = true
-farmLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+farmLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 farmLabel.TextStrokeTransparency = 0
 
-
-
-
+-- Form Label
 meleeLabel.Parent = MenuPanel
 meleeLabel.BackgroundTransparency = 1
-meleeLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 meleeLabel.BorderSizePixel = 0
-meleeLabel.Position = UDim2.new(0.01, 5, 0.2,22)
-meleeLabel.Size = UDim2.new(0, 89, 0, 60)
+meleeLabel.Position = UDim2.new(0.2, -100, 0.3, 0) -- Aligné avec Switch3
+meleeLabel.Size = UDim2.new(0, 100, 0, 40)
 meleeLabel.Font = Enum.Font.SourceSans
 meleeLabel.Text = "Form"
-meleeLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+meleeLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 meleeLabel.TextScaled = true
-meleeLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+meleeLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 meleeLabel.TextStrokeTransparency = 0
 
-
-
+-- Rebirth Label
 Reb.Parent = MenuPanel
 Reb.BackgroundTransparency = 1
-Reb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Reb.BorderSizePixel = 0
-Reb.Position = UDim2.new(0.01, 5, 0.3,24)
-Reb.Size = UDim2.new(0, 89, 0, 60)
+Reb.Position = UDim2.new(0.2, -100, 0.4, 0) -- Aligné avec Switch5
+Reb.Size = UDim2.new(0, 100, 0, 40)
 Reb.Font = Enum.Font.SourceSans
 Reb.Text = "Rebirth"
-Reb.TextColor3 = Color3.fromRGB(0, 0, 0)
+Reb.TextColor3 = Color3.fromRGB(255, 255, 255)
 Reb.TextScaled = true
-Reb.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+Reb.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Reb.TextStrokeTransparency = 0
 
-
-
+-- Skills Label
 mle_extLabel.Parent = MenuPanel
 mle_extLabel.BackgroundTransparency = 1
-mle_extLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 mle_extLabel.BorderSizePixel = 0
-mle_extLabel.Position = UDim2.new(0.4, 69, 0.4, 35)
-mle_extLabel.Size = UDim2.new(0, 39, 0, 40)
+mle_extLabel.Position = UDim2.new(0.2, -100, 0.5, 0) -- Aligné avec Switch6
+mle_extLabel.Size = UDim2.new(0, 100, 0, 40)
 mle_extLabel.Font = Enum.Font.SourceSans
 mle_extLabel.Text = "SKILLS"
-mle_extLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+mle_extLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 mle_extLabel.TextScaled = true
-mle_extLabel.TextStrokeColor3 = Color3.fromRGB(205, 255, 255)
+mle_extLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 mle_extLabel.TextStrokeTransparency = 0
+
 
 Panel.Parent = ScreenGui
 Panel.BackgroundTransparency = 1
