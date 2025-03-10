@@ -128,7 +128,7 @@ MinimizeButton.BorderSizePixel = 0
 MinimizeButton.Position = UDim2.new(0.9, 10, 0.5, -14)
 MinimizeButton.Size = UDim2.new(0, 30, 0, 26)
 MinimizeButton.Font = Enum.Font.SourceSans
-MinimizeButton.Text = "Op"
+MinimizeButton.Text = ""
 MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MinimizeButton.TextSize = 18
 
@@ -154,7 +154,7 @@ farmLabel.BorderSizePixel = 0
 farmLabel.Position = UDim2.new(0.26, -90, 0.1, 0) -- Décalage légèrement à gauche
 farmLabel.Size = UDim2.new(0, 100, 0, 40)
 farmLabel.Font = Enum.Font.SourceSans
-farmLabel.Text = "Autofarm:  "
+farmLabel.Text = "AUTO-FARM:  "
 farmLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 farmLabel.TextScaled = true
 farmLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -167,7 +167,7 @@ meleeLabel.BorderSizePixel = 0
 meleeLabel.Position = UDim2.new(0.26, -90, 0.3, 0) -- Décalage légèrement à gauche
 meleeLabel.Size = UDim2.new(0, 100, 0, 40)
 meleeLabel.Font = Enum.Font.SourceSans
-meleeLabel.Text = "Form:  "
+meleeLabel.Text = "FROM:  "
 meleeLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 meleeLabel.TextScaled = true
 meleeLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -180,7 +180,7 @@ Reb.BorderSizePixel = 0
 Reb.Position = UDim2.new(0.26, -90, 0.4, 0) -- Décalage légèrement à gauche
 Reb.Size = UDim2.new(0, 100, 0, 40)
 Reb.Font = Enum.Font.SourceSans
-Reb.Text = "Rebirth:  "
+Reb.Text = "REBIRTH:  "
 Reb.TextColor3 = Color3.fromRGB(255, 255, 255)
 Reb.TextScaled = true
 Reb.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -198,6 +198,25 @@ mle_extLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 mle_extLabel.TextScaled = true
 mle_extLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 mle_extLabel.TextStrokeTransparency = 0
+
+
+
+
+--abbrev
+-- Création du label à côté de SwitchBall7
+local switch7Label = Instance.new("TextLabel")
+switch7Label.Parent = MenuPanel
+switch7Label.BackgroundTransparency = 1
+switch7Label.BorderSizePixel = 0
+switch7Label.Position = UDim2.new(0.4, 90, 0.242, 125) -- Ajuste pour être à droite de SwitchBall7
+switch7Label.Size = UDim2.new(0, 100, 0, 40)
+switch7Label.Font = Enum.Font.SourceSans
+switch7Label.Text = "ABREVIATION:  " -- Change le texte ici
+switch7Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+switch7Label.TextScaled = true
+switch7Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+switch7Label.TextStrokeTransparency = 0
+
 
 
 
@@ -325,7 +344,7 @@ MenuPanel.Visible = menuExpanded
 pcall(function()
     if menuExpanded then
         MenuPanel.Size = expandSize
-        MinimizeButton.Text = "Op"
+        MinimizeButton.Text = "-"
     else
         MenuPanel.Size = contractSize
         MinimizeButton.Text = "+"
@@ -343,7 +362,7 @@ MinimizeButton.MouseButton1Click:Connect(function()
         else
             MenuPanel.Visible = true
             expandTween:Play()
-            MinimizeButton.Text = "Op"
+            MinimizeButton.Text = "-"
             sound:Play()
         end
         menuExpanded = not menuExpanded
@@ -656,10 +675,10 @@ local function updateStatsGui()
         local maxKi = lplr.Character and lplr.Character:FindFirstChild("Stats") and lplr.Character.Stats.Ki.MaxValue or 0
 
         pcall(function()
-            HPText.Text = "VIE: " .. format_number(health) .. " / " .. format_number(maxHealth)
+            HPText.Text = "HEALTH " .. format_number(health) .. " / " .. format_number(maxHealth)
         end)
         pcall(function()
-            EnergyText.Text = "ENERGIE: " .. format_number(ki) .. " / " .. format_number(maxKi)
+            EnergyText.Text = "ENERGY: " .. format_number(ki) .. " / " .. format_number(maxKi)
         end)
         pcall(function()
             ZeniLabel.Text = format_number(ldata.Zeni.Value) .. " Zeni"
