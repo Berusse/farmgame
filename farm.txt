@@ -202,20 +202,20 @@ mle_extLabel.TextStrokeTransparency = 0
 
 
 
---abbrev
--- Création du label à côté de SwitchBall7
-local switch7Label = Instance.new("TextLabel")
-switch7Label.Parent = MenuPanel
-switch7Label.BackgroundTransparency = 1
-switch7Label.BorderSizePixel = 0
-switch7Label.Position = UDim2.new(0.4, 90, 0.242, 125) -- Ajuste pour être à droite de SwitchBall7
-switch7Label.Size = UDim2.new(0, 100, 0, 40)
-switch7Label.Font = Enum.Font.SourceSans
-switch7Label.Text = "ABREVIATION:  " -- Change le texte ici
-switch7Label.TextColor3 = Color3.fromRGB(255, 255, 255)
-switch7Label.TextScaled = true
-switch7Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-switch7Label.TextStrokeTransparency = 0
+-- Création du label à gauche de SwitchBall2
+local switch2Label = Instance.new("TextLabel")
+switch2Label.Parent = MenuPanel
+switch2Label.BackgroundTransparency = 1
+switch2Label.BorderSizePixel = 0
+switch2Label.Position = UDim2.new(0.6, -110, 0, 69) -- Décalé à gauche de SwitchBall2
+switch2Label.Size = UDim2.new(0, 100, 0, 40)
+switch2Label.Font = Enum.Font.SourceSans
+switch2Label.Text = "ABREVIATION:  " -- Change le texte ici
+switch2Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+switch2Label.TextScaled = true
+switch2Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+switch2Label.TextStrokeTransparency = 0
+
 
 
 
