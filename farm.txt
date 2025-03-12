@@ -501,12 +501,16 @@ local function assignQuest()
         end
     end
 
+    -- Debug: Vérification des valeurs de currentQuest et currentMob
     if not currentQuest then
-        warn("[INFO] Aucune quête disponible pour cette stat.")
+        warn("[INFO] Aucune quête trouvée pour cette stat, lowestStat: " .. tostring(lowestStat))
         return
     end
 
-    -- Vérification de l'état de la quête en cours avant de changer
+    -- Débogage pour s'assurer que la quête et le boss sont définis
+    print("[DEBUG] currentQuest: " .. tostring(currentQuest))
+    print("[DEBUG] currentMob: " .. tostring(currentMob))
+
     if game:GetService("ReplicatedStorage").Datas[player.UserId].Quest.Value ~= "" then
         warn("[INFO] Une quête est encore active, pas de changement.")
         return
@@ -518,20 +522,20 @@ local function assignQuest()
             SelectedQuest = previousQuest
             SelectedMob = previousMob
             isDoingAlternateQuest = false
-            questCompleted = false -- Réinitialise lorsque l'on passe à la quête précédente
+            questCompleted = false
             warn("[INFO] Passage à la quête précédente : " .. previousQuest)
         else
             SelectedQuest = currentQuest
             SelectedMob = currentMob
             isDoingAlternateQuest = true
-            questCompleted = false -- Réinitialise lorsque l'on retourne à la quête principale
+            questCompleted = false
             warn("[INFO] Retour à la quête principale : " .. currentQuest)
         end
     else
         SelectedQuest = currentQuest
         SelectedMob = currentMob
         isDoingAlternateQuest = true
-        questCompleted = false -- Réinitialise lorsque l'on commence la quête principale
+        questCompleted = false
         warn("[INFO] Début de la quête principale : " .. currentQuest)
     end
 end
@@ -542,7 +546,7 @@ local function startMission()
         return
     end
 
-    isTakingQuest = true -- Empêche de prendre une quête en même temps
+    isTakingQuest = true
 
     -- Utilisation de pcall pour capturer les erreurs
     pcall(function()
@@ -550,21 +554,21 @@ local function startMission()
 
         -- Si la quête est déjà active
         if questValue == SelectedQuest then
-            warn("[INFO] Quête déjà active : " .. tostring(SelectedQuest)) -- Vérification que SelectedQuest n'est pas nil
+            warn("[INFO] Quête déjà active : " .. tostring(SelectedQuest))
             isTakingQuest = false
             return
         end
 
         -- Recherche du PNJ pour la quête
         local npc = game:GetService("Workspace").Others.NPCs:FindFirstChild(SelectedQuest)
-        
+
         if npc and npc:FindFirstChild("HumanoidRootPart") then
             warn("[INFO] Téléportation vers le PNJ pour la quête : " .. tostring(SelectedQuest))
             player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
 
-            task.wait() -- Attente pour éviter le spam
+            task.wait()
 
-            -- Assurez-vous que l'event existe avant d'essayer de l'utiliser
+            -- Vérification de l'existence de l'événement
             if events.Qaction then
                 local args = {npc}
                 events.Qaction:InvokeServer(unpack(args))
@@ -573,17 +577,15 @@ local function startMission()
                 warn("[ERREUR] `events.Qaction` est introuvable !")
             end
 
-            questCompleted = false -- Réinitialisation de la quête terminée
+            questCompleted = false
         else
             warn("[ERREUR] Impossible de trouver le PNJ pour la quête : " .. tostring(SelectedQuest))
         end
-    end) -- Fermeture correcte du pcall
+    end)
 
-    task.wait() -- Attente avant de débloquer la prise de quête suivante
-    isTakingQuest = false -- Débloque la prise de quête
-end -- Fermeture correcte de la fonction startMission
-
-
+    task.wait()
+    isTakingQuest = false
+end
 
 task.spawn(function()
     while true do
@@ -619,6 +621,7 @@ task.spawn(function()
         end
     end
 end)
+
 
 
 
