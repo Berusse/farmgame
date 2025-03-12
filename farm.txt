@@ -609,15 +609,17 @@ task.spawn(function()
             end
         end)
 
+        -- Si pcall échoue, afficher l'erreur spécifique dans la console.
         if not success then
             if errorMessage then
-                warn("[ERREUR] Assignation de quête : " .. errorMessage)
+                warn("[ERREUR] Assignation de quête : " .. tostring(errorMessage))
             else
-                warn("[ERREUR] Assignation de quête : Message d'erreur inconnu.")
+                warn("[ERREUR] Assignation de quête : Erreur inconnue")
             end
         end
     end
 end)
+
 
 
 
