@@ -482,6 +482,35 @@ local function getQuestByStat(stat)
     return nil, nil, nil
 end
 
+local missions = {
+    { name = "Kid Nohag", bossName = "Kid Nohag", requiredValue = 0, endRange = 10000000 },
+    { name = "SSJB Wukong", bossName = "SSJB Wukong", requiredValue = 10000001, endRange = 56300000 },
+    { name = "Winter Wukong", bossName = "Winter Wukong", requiredValue = 56300001, endRange = 400000000 },
+    { name = "SSJG Kakata", bossName = "SSJG Kakata", requiredValue = 400000001, endRange = 2000000000 },
+    { name = "Winter Bills", bossName = "Winter Bills", requiredValue = 2000000001, endRange = 5500000001 },
+    { name = "Vekuta (SSJBUI)", bossName = "Vekuta (SSJBUI)", requiredValue = 5500000001, endRange = math.huge },
+}
+
+local SelectedQuest
+local SelectedMob
+local isDoingAlternateQuest = false
+local isTakingQuest = false
+local questCompleted = false
+
+local function BossIsAlive(mobName)
+    local boss = game.Workspace.Living:FindFirstChild(mobName)
+    return boss and boss:FindFirstChild("Humanoid") and boss.Humanoid.Health > 0
+end
+
+local function getQuestByStat(stat)
+    for i, mission in ipairs(missions) do
+        if stat >= mission.requiredValue and stat <= mission.endRange then
+            return mission.name, mission.bossName, i
+        end
+    end
+    return nil, nil, nil
+end
+
 local function assignQuest()
     local lowestStat = math.min(data.Strength.Value, data.Energy.Value, data.Defense.Value, data.Speed.Value)
 
@@ -501,16 +530,16 @@ local function assignQuest()
         end
     end
 
-    -- Debug: Vérification des valeurs de currentQuest et currentMob
+    -- Ajout d'un log pour vérifier l'état de currentQuest et currentMob
     if not currentQuest then
-        warn("[INFO] Aucune quête trouvée pour cette stat, lowestStat: " .. tostring(lowestStat))
+        warn("[INFO] Aucune quête trouvée pour cette stat : " .. tostring(lowestStat))
         return
     end
 
-    -- Débogage pour s'assurer que la quête et le boss sont définis
     print("[DEBUG] currentQuest: " .. tostring(currentQuest))
     print("[DEBUG] currentMob: " .. tostring(currentMob))
 
+    -- Vérification si une quête est déjà active
     if game:GetService("ReplicatedStorage").Datas[player.UserId].Quest.Value ~= "" then
         warn("[INFO] Une quête est encore active, pas de changement.")
         return
@@ -551,6 +580,13 @@ local function startMission()
     -- Utilisation de pcall pour capturer les erreurs
     pcall(function()
         local questValue = game:GetService("ReplicatedStorage").Datas[player.UserId].Quest.Value
+
+        -- Vérification de la valeur de SelectedQuest avant de l'utiliser
+        if not SelectedQuest then
+            warn("[ERREUR] SelectedQuest est nil !")
+            isTakingQuest = false
+            return
+        end
 
         -- Si la quête est déjà active
         if questValue == SelectedQuest then
@@ -594,16 +630,19 @@ task.spawn(function()
         local success, errorMessage = pcall(function()
             local questValue = game:GetService("ReplicatedStorage").Datas[player.UserId].Quest.Value
 
+            -- Vérifie si la quête est en cours et si le boss est vivant
             if questValue ~= "" then
                 if BossIsAlive(SelectedMob) then
                     return
                 end
             end
 
+            -- Confirme que la quête est terminée
             if questValue == "" and not BossIsAlive(SelectedMob) then
                 questCompleted = true
             end
 
+            -- Si la quête est bien terminée, alterner avec la précédente si possible
             if questCompleted then
                 assignQuest()
                 startMission()
@@ -611,7 +650,7 @@ task.spawn(function()
             end
         end)
 
-        -- Si pcall échoue, afficher l'erreur spécifique dans la console.
+        -- Si pcall échoue, afficher l'erreur spécifique dans la console
         if not success then
             if errorMessage then
                 warn("[ERREUR] Assignation de quête : " .. tostring(errorMessage))
@@ -620,6 +659,8 @@ task.spawn(function()
             end
         end
     end
+end)
+
 end)
 
 
