@@ -630,7 +630,7 @@ task.spawn(function()
 
 
             if boss and boss:FindFirstChild("Humanoid") and boss.Humanoid.Health > 0 then
-                player.Status.Blocking.Value = false  
+                player.Status.Blocking.Value = true  
 
                 -- Récupérer l'orientation de l'ennemi et se positionner derrière
                 local enemyHRP = boss.HumanoidRootPart
